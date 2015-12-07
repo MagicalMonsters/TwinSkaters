@@ -8,6 +8,8 @@ public class Controls : MonoBehaviour {
 	private GameObject leftSkate;
 	private GameObject rightSkate;
 	private float initialY;
+	private int leftSkaterotate;
+	private int rightSkaterotate;
 	
 	void Start () 
 	{
@@ -17,8 +19,12 @@ public class Controls : MonoBehaviour {
 	}
 	
 	void Update () {
-		leftSkate.transform.rotation = Quaternion.identity;
-		rightSkate.transform.rotation = Quaternion.identity;
+		Quaternion leftRotation = Quaternion.identity;
+		Quaternion rightRotation = Quaternion.identity;
+		leftRotation.eulerAngles = new Vector3(0.0f, 0.0f, -12.5f*leftSkaterotate);
+		rightRotation.eulerAngles = new Vector3(0.0f, 0.0f, -12.5f*rightSkaterotate);
+		leftSkate.transform.rotation = leftRotation;
+		rightSkate.transform.rotation = rightRotation;
 		leftSkate.transform.position = new Vector3(leftSkate.transform.position.x, 
 				initialY, leftSkate.transform.position.z);
 				
@@ -29,24 +35,34 @@ public class Controls : MonoBehaviour {
 	
 	void FixedUpdate ()
 	{
+		leftSkaterotate = 0;
+		rightSkaterotate = 0;
 		Vector3 leftSkateMove = Vector3.zero;
 		Vector3 rightSkateMove = Vector3.zero;
 		if (Input.GetKey ("right")) {										
 			leftSkateMove = new Vector3(1,0,0) * speed * Time.deltaTime;
-			rightSkateMove = leftSkateMove;			
+			rightSkateMove = leftSkateMove;
+			leftSkaterotate += 1;
+			rightSkaterotate += 1;
 		} 
 		if (Input.GetKey ("left")) {
 			leftSkateMove = new Vector3(-1,0,0) * speed * Time.deltaTime;
 			rightSkateMove = leftSkateMove;			
+			leftSkaterotate -= 1;
+			rightSkaterotate -= 1;
 		}
 		 
 		if (Input.GetKey ("up")) {
 			leftSkateMove += new Vector3(-1,0,0) * speed * Time.deltaTime;
-			rightSkateMove += new Vector3(1,0,0) * speed * Time.deltaTime;			
+			rightSkateMove += new Vector3(1,0,0) * speed * Time.deltaTime;
+			leftSkaterotate -= 1;
+			rightSkaterotate += 1;
 		} 
 		if (Input.GetKey ("down")) {
 			leftSkateMove += new Vector3(1,0,0) * speed * Time.deltaTime;
-			rightSkateMove += new Vector3(-1,0,0) * speed * Time.deltaTime;			
+			rightSkateMove += new Vector3(-1,0,0) * speed * Time.deltaTime;
+			leftSkaterotate += 1;
+			rightSkaterotate -= 1;			
 		}
 		
 		if (leftSkateMove != Vector3.zero) {
