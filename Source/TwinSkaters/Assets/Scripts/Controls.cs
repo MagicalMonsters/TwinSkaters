@@ -15,6 +15,11 @@ public class Controls : MonoBehaviour {
 		rightSkate = GameObject.FindWithTag ("RightSkate");
 	}
 	
+	void Update () {
+		leftSkate.transform.rotation = Quaternion.identity;
+		rightSkate.transform.rotation = Quaternion.identity;
+	}
+	
 	void FixedUpdate ()
 	{
 		Vector3 leftSkateMove = Vector3.zero;
@@ -42,14 +47,6 @@ public class Controls : MonoBehaviour {
 		}
 		if (rightSkateMove != Vector3.zero) {
 			rightSkate.transform.Translate(rightSkateMove);
-		}
-		
-	}
-
-	
-	
-	// Update is called once per frame
-	void Update () {
-	
+		}	
 	}
 }
