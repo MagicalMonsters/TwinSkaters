@@ -7,17 +7,24 @@ public class Controls : MonoBehaviour {
 		
 	private GameObject leftSkate;
 	private GameObject rightSkate;
-	
+	private float initialY;
 	
 	void Start () 
 	{
 		leftSkate = GameObject.FindWithTag ("LeftSkate");
 		rightSkate = GameObject.FindWithTag ("RightSkate");
+		initialY = leftSkate.transform.position.y;
 	}
 	
 	void Update () {
 		leftSkate.transform.rotation = Quaternion.identity;
 		rightSkate.transform.rotation = Quaternion.identity;
+		leftSkate.transform.position = new Vector3(leftSkate.transform.position.x, 
+				initialY, leftSkate.transform.position.z);
+				
+		rightSkate.transform.position = new Vector3(rightSkate.transform.position.x, 
+				initialY, rightSkate.transform.position.z);
+				
 	}
 	
 	void FixedUpdate ()
