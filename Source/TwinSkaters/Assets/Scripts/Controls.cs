@@ -19,18 +19,22 @@ public class Controls : MonoBehaviour {
 	{
 		Vector3 leftSkateMove = Vector3.zero;
 		Vector3 rightSkateMove = Vector3.zero;
-		if (Input.GetKey ("right")) {									
+		if (Input.GetKey ("right")) {										
 			leftSkateMove = new Vector3(1,0,0) * speed * Time.deltaTime;
 			rightSkateMove = leftSkateMove;			
-		} else if (Input.GetKey ("left")) {
+		} 
+		if (Input.GetKey ("left")) {
 			leftSkateMove = new Vector3(-1,0,0) * speed * Time.deltaTime;
 			rightSkateMove = leftSkateMove;			
-		} else if (Input.GetKey ("up")) {
-			leftSkateMove = new Vector3(-1,0,0) * speed * Time.deltaTime;
-			rightSkateMove = new Vector3(1,0,0) * speed * Time.deltaTime;			
-		} else if (Input.GetKey ("down")) {
-			leftSkateMove = new Vector3(1,0,0) * speed * Time.deltaTime;
-			rightSkateMove = new Vector3(-1,0,0) * speed * Time.deltaTime;			
+		}
+		 
+		if (Input.GetKey ("up")) {
+			leftSkateMove += new Vector3(-1,0,0) * speed * Time.deltaTime;
+			rightSkateMove += new Vector3(1,0,0) * speed * Time.deltaTime;			
+		} 
+		if (Input.GetKey ("down")) {
+			leftSkateMove += new Vector3(1,0,0) * speed * Time.deltaTime;
+			rightSkateMove += new Vector3(-1,0,0) * speed * Time.deltaTime;			
 		}
 		
 		if (leftSkateMove != Vector3.zero) {
