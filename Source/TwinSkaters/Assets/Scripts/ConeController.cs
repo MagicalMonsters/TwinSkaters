@@ -6,7 +6,7 @@ public class ConeController : MonoBehaviour {
 	private System.Action onCollision;
 	
 		
-	void SetOnCollision (System.Action onCollision) 
+	public void SetOnCollision (System.Action onCollision) 
 	{
 		this.onCollision = onCollision;
 	}
