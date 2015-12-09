@@ -27,7 +27,7 @@ public class ConeController : MonoBehaviour {
 		this.onCollision = onCollision;
 	}
 	
-	void OnCollisionEnter (Collision collision) 
+	void OnCollisionEnter2D (Collision2D collision) 
 	{
 		if (collision.gameObject.tag == "RightSkate" || collision.gameObject.tag == "LeftSkate" ) 
 		{
