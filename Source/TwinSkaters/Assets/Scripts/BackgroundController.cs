@@ -2,30 +2,19 @@
 using System.Collections;
 
 public class BackgroundController : MonoBehaviour
-{
-    public float scrollSpeed;
+{    
     private Vector3 startPosition;
-
+    private GameController gameController;
     
-
     void Start ()
     {
         startPosition = transform.position;
-        GameObject[] cones = GameObject.FindGameObjectsWithTag ("Cone");        
-        foreach (GameObject cone in cones)
-        {
-            Debug.Log("" + cone);
-            ConeController c = cone.GetComponent<ConeController> ();
-            Debug.Log("" + c);
-            c.SetOnCollision (() => {
-               Time.timeScale = 0; 
-            });
-        }
+        gameController = GameObject.FindWithTag("GameScript").GetComponent<GameController>();        
     }
 
 	void Update ()
 	{
-		float newPosition = Mathf.Repeat(Time.time * scrollSpeed, GetComponent<Renderer>().bounds.size.y - 3f*Camera.main.orthographicSize);
+		float newPosition = Mathf.Repeat(Time.time * gameController.scrollSpeed, GetComponent<Renderer>().bounds.size.y - 3f*Camera.main.orthographicSize);
 		transform.position = startPosition - Vector3.up * newPosition;
 	}
 }
