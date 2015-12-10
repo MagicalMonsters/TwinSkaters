@@ -14,6 +14,7 @@ public class BackgroundController : MonoBehaviour
 
 	void Update ()
 	{
+
 		float newPosition = Mathf.Repeat(Time.time * gameController.scrollSpeed, GetComponent<Renderer>().bounds.size.y - 3f*Camera.main.orthographicSize);
 		transform.position = startPosition - Vector3.up * newPosition;
 	}

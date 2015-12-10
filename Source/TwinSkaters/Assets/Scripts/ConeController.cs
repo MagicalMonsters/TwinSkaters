@@ -33,7 +33,7 @@ public class ConeController : MonoBehaviour {
 			SpriteAnimation();	
 		}		
 		float newPosition = Time.deltaTime * gameController.scrollSpeed;
-		if (transform.position.y < -5.0f) {
+		if (transform.position.y < -6.0f) {
 			if (shouldRemove) {
 				gameController = null;
 				Destroy(gameObject);
