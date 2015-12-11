@@ -5,6 +5,7 @@ public class BackgroundController : MonoBehaviour
 {    
     private Vector3 startPosition;
     private GameController gameController;
+	private float newPosition;
     
     void Start ()
     {
@@ -14,8 +15,7 @@ public class BackgroundController : MonoBehaviour
 
 	void Update ()
 	{
-
-		float newPosition = Mathf.Repeat(Time.time * gameController.scrollSpeed, GetComponent<Renderer>().bounds.size.y - 3f*Camera.main.orthographicSize);
+		newPosition = Mathf.Repeat(newPosition + Time.deltaTime * gameController.scrollSpeed, GetComponent<Renderer>().bounds.size.y - 3f*Camera.main.orthographicSize);
 		transform.position = startPosition - Vector3.up * newPosition;
 	}
 }

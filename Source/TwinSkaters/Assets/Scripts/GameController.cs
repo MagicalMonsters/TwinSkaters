@@ -42,8 +42,7 @@ public class GameController : MonoBehaviour {
 	}
 		
 	void Update () {
-		
-		// scrollSpeed = initialScrollSpeed + Time.deltaTime * scrollSpeedCoefficient;
+
 				
 		if (threshold1 != 0 && threshold1 < Time.timeSinceLevelLoad)
 		{
@@ -66,5 +65,8 @@ public class GameController : MonoBehaviour {
 				centerText.gameObject.SetActive(false);
 			}
 		}
+
+		
+		scrollSpeed += 0.001f;
 	}
 }
