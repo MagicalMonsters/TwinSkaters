@@ -4,6 +4,7 @@ using System.Collections;
 public class Controls : MonoBehaviour {
 	
 	public float speed = 1.0f;
+	public int score;
 		
 	private GameObject leftSkate;
 	private GameObject rightSkate;
@@ -13,6 +14,7 @@ public class Controls : MonoBehaviour {
 	
 	void Start () 
 	{
+		score = 0;
 		leftSkate = GameObject.FindWithTag ("LeftSkate");
 		rightSkate = GameObject.FindWithTag ("RightSkate");
 		initialY = leftSkate.transform.position.y;
