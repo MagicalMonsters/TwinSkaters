@@ -12,7 +12,6 @@ public class ScoreCalculator : MonoBehaviour {
 	}
 
 	void OnTriggerExit2D (Collider2D other) {
-		Debug.Log("hi");
 		GameObject collider = other.gameObject;
 		if (collider.tag == "Cone") {
 			Skates.GetComponent<Controls>().score++;
