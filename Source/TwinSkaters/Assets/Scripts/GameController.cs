@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour {
 		// handle gameover case
 		if (waitForAnyKeyToRestart)
 		{
-			if (Input.anyKey) {
+			if (Input.GetKeyDown("return")) {
 				waitForAnyKeyToRestart = false;
 				Application.LoadLevel(0);
 				Time.timeScale = 1;
