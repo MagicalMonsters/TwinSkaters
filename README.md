@@ -12,11 +12,11 @@ E -> right plane release water
 Background scene is a combination of forests and mountains (some parts of forests may be on fire)
 The purpose is to stop as much fire as possible.
 Fire will stop if a plane release water on top of it.
-<<<<<<< HEAD
-The water from the planes is limited.
-The score of the player is based on the percentage of fire they stopped.
-Also players should avoid colliding with the mountains (mountains work as obstacles)
-=======
+
+The water of the planes is limited.
+The score of the player is based on the percentage of fire they stoped.
+Also players should prevent colliding with the mountains (mountains work as obstacles)
+
 The water of the planes is limited.
 The score of the player is based on the percentage of fire they stoped.
 Also players should prevent colliding with the mountains (mountains work as obstacles)
