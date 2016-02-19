@@ -11,22 +11,50 @@ public class GameController : MonoBehaviour {
 	public float threshold2 = 50f;
 	
 	public int level1NumberOfCones = 5;
+	public int numberOfStars = 2;
 	
 	public UnityEngine.UI.Text centerText;
+	public UnityEngine.UI.Text scoreText;
 	public GameObject conePrefab;
+	public GameObject starPrefeb;
 	
 	// private float initialScrollSpeed;
 	private bool waitForAnyKeyToRestart = false;
 	private GameObject[] cones;
+	private GameObject[] stars;
+	private int Score;
 
 	void Start () {
 		// initialScrollSpeed = scrollSpeed;
-		cones = new GameObject[level1NumberOfCones];
+
+		Score = 0; 
+
+		float randX, randY;
+
+		stars = new GameObject[numberOfStars];
+
+		for (int i = 0; i < numberOfStars; i++) {
+			randX = (Random.value-0.5f) * 7.5f;
+			randY =  Random.value * 5 + 5;
+
+			stars [i] = (GameObject)Instantiate (starPrefeb, new Vector3 (randX, randY, 0), Quaternion.identity);
+		}
+
+		foreach (GameObject star in stars)
+		{        
+			StarController s = star.GetComponent<StarController> ();			         
+			s.SetOnCollision (() => {
+				Score++;
+				scoreText.text = ""+Score;
+			});
+		}
 		
+		cones = new GameObject[level1NumberOfCones];
+
 		for (int i = 0; i < level1NumberOfCones; i++)
 		{
-			float randX = (Random.value-0.5f) * 11.0f;
-			float randY =  Random.value * 5 + 5;
+			randX = (Random.value-0.5f) * 11.0f;
+			randY =  Random.value * 5 + 5;
 			cones[i] = (GameObject) Instantiate(conePrefab,new Vector3 (randX, randY, 0), Quaternion.identity);
 		}
 		        
