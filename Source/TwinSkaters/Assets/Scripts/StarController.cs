@@ -7,11 +7,13 @@ public class StarController : MonoBehaviour {
 	private Vector3 startPosition;
 	private GameController gameController;
 	private System.Action onCollision;
+	private AudioSource sound;
 
 	// Use this for initialization
 	void Start () {
 		startPosition = transform.position;
 		gameController = GameObject.FindWithTag("GameScript").GetComponent<GameController>();
+		sound = this.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -41,6 +43,7 @@ public class StarController : MonoBehaviour {
 		{
 			if (onCollision != null)
 			{
+				sound.Play();
 				onCollision();
 				transform.position = new Vector3( (Random.value-0.5f) * 11.0f, startPosition.y, transform.position.z);
 			}		

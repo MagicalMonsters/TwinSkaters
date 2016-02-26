@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
 	private GameObject[] cones;
 	private GameObject[] stars;
 	private int Score;
+	private float Score2;
 
 	void Start () {
 		// initialScrollSpeed = scrollSpeed;
@@ -45,7 +46,7 @@ public class GameController : MonoBehaviour {
 			StarController s = star.GetComponent<StarController> ();			         
 			s.SetOnCollision (() => {
 				Score++;
-				scoreText.text = ""+Score;
+				Score2+=10.0f;
 			});
 		}
 		
@@ -70,7 +71,6 @@ public class GameController : MonoBehaviour {
 	}
 		
 	void Update () {
-
 				
 		if (threshold1 != 0 && threshold1 < Time.timeSinceLevelLoad)
 		{
@@ -92,6 +92,10 @@ public class GameController : MonoBehaviour {
 				Time.timeScale = 1;
 				centerText.gameObject.SetActive(false);
 			}
+		}
+		else{
+			Score2+=Time.deltaTime;
+			scoreText.text = "Score:\n"+(int)Score2;
 		}
 
 		
